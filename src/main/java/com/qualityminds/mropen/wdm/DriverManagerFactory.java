@@ -14,10 +14,15 @@ public class DriverManagerFactory {
 
     @Contract("_ -> new")
     public @NotNull DriverManager getManager(@NotNull BrowserType browserType) {
-        return switch (browserType) {
-            case CHROME -> new ChromeDriverManager();
-            case FIREFOX -> new FirefoxDriverManager();
-            case EDGE -> new EdgeDriverManager();
-        };
+        switch (browserType) {
+            case CHROME:
+                return new ChromeDriverManager();
+            case FIREFOX:
+                return new FirefoxDriverManager();
+            case EDGE:
+                return new EdgeDriverManager();
+            default:
+                throw new IllegalArgumentException();
+        }
     }
 }

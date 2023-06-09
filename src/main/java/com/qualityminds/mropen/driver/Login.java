@@ -20,8 +20,8 @@ public class Login extends BaseDriver {
     private final By finalLoginBtn = By.id("next");
 
 
-    public Login(BrowserType browserType) {
-        super(browserType, 10);
+    public Login(BrowserType browserType, boolean isHeadless) {
+        super(browserType, 10, isHeadless);
     }
 
     public void openPage(@NotNull Envs envs) {

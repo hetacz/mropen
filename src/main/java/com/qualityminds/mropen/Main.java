@@ -24,7 +24,7 @@ public class Main {
 
         log.info("Username: {}, password: {}, browser: {}, env: {}", username, password, browser, env);
 
-        Login login = new Login(BrowserType.valueOf(browser.toUpperCase()));
+        Login login = new Login(BrowserType.valueOf(browser.toUpperCase()), false);
         login.openPage(Envs.valueOf(env.toUpperCase()));
         login.acceptCookies();
         login.clickLoginBtn();

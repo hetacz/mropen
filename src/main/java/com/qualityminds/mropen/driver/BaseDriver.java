@@ -16,14 +16,20 @@ public abstract class BaseDriver {
     private final WebDriverWait wait;
     private final ThreadLocal<WebDriver> driver;
 
-    protected BaseDriver(BrowserType browserType, long timeout) {
+    protected BaseDriver(BrowserType browserType, long timeout, boolean isHeadless) {
         this.driver = new ThreadLocal<>();
-        driver.set(DriverManagerFactory.getManager(browserType).createDriver());
+        driver.set(isHeadless
+                ? DriverManagerFactory.getManager(browserType).createDriverHeadless()
+                : DriverManagerFactory.getManager(browserType).createDriver());
         this.wait = new WebDriverWait(driver.get(), Duration.ofSeconds(timeout));
     }
 
     protected WebDriver driver() {
         return driver.get();
+    }
+
+    public void close() {
+        driver.get().quit();
     }
 
     protected <T> WebElement getClickableElement(T locator) {

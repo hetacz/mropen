@@ -4,6 +4,7 @@ import com.qualityminds.mropen.wdm.DriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 public class EdgeDriverManager implements DriverManager {
 
@@ -17,11 +18,9 @@ public class EdgeDriverManager implements DriverManager {
 
     @Override
     public WebDriver createDriverHeadless() {
-        return null;
-
-        //        WebDriverManager.edgedriver().cachePath("drivers").setup();
-//        EdgeOptions options = new EdgeOptions();
-//        options.addArguments("--window-size=1920,1080", "--headless=new");
-//        return new EdgeDriver(options);
+        WebDriverManager.edgedriver().cachePath("drivers").setup();
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("--window-size=1920,1080", "--headless=new");
+        return new EdgeDriver(options);
     }
 }

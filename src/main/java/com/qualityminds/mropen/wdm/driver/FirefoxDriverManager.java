@@ -4,6 +4,7 @@ import com.qualityminds.mropen.wdm.DriverManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class FirefoxDriverManager implements DriverManager {
 
@@ -17,10 +18,9 @@ public class FirefoxDriverManager implements DriverManager {
 
     @Override
     public WebDriver createDriverHeadless() {
-        return null;
-//        WebDriverManager.firefoxdriver().cachePath("drivers").setup();
-//        FirefoxOptions options = new FirefoxOptions();
-//        options.addArguments("--window-size=1920,1080", "-headless");
-//        return new FirefoxDriver(options);
+        WebDriverManager.firefoxdriver().cachePath("drivers").setup();
+        FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("--window-size=1920,1080", "-headless");
+        return new FirefoxDriver(options);
     }
 }
