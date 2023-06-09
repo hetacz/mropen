@@ -1,1 +1,1 @@
-pwsh.exe -executionpolicy remotesigned -File "./PROD_Chrome.ps1"
+pwsh.exe -executionpolicy bypass -File "./PROD_Chrome.ps1"
